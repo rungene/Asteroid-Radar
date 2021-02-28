@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 //we use this class to hold our Network Layer
 //the api that ViewModel uses to communicate with our Webservice
@@ -28,6 +29,8 @@ private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .build()
 
+
+
 /**
  * A public interface that exposes the [getProperties] method
  */
@@ -39,7 +42,7 @@ interface NasaApiService {
      * HTTP method
      */
     @GET("neo/rest/v1/feed")
-   suspend fun getProperties():List<NasaProperty>
+    suspend  fun getAsteroidsAsync(@Query("api_key") key:String, @Query("start_date") startDate:String, @Query("end_date") endDate:String): String
 }
 
 /**

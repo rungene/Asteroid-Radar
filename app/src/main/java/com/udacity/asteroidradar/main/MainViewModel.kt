@@ -1,14 +1,15 @@
 package com.udacity.asteroidradar.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
+import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.Constants
 import com.udacity.asteroidradar.api.Image
 import com.udacity.asteroidradar.api.ImageApi
 import com.udacity.asteroidradar.api.NasaApi
 import com.udacity.asteroidradar.api.NasaProperty
+import com.udacity.asteroidradar.database.getDatabase
+import com.udacity.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -19,7 +20,7 @@ import java.lang.Exception
 
 enum class ImageApiStatus { LOADING, ERROR, DONE }
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     // The internal MutableLiveData String that stores the status of the most recent request
     private val _status = MutableLiveData<ImageApiStatus>()
@@ -37,12 +38,33 @@ class MainViewModel : ViewModel() {
         get() = _image
 
 
+    private val _navigateToSelectedAsteroid = MutableLiveData<Asteroid>()
+    val navigateToSelectedAsteroid: LiveData<Asteroid>
+        get() = _navigateToSelectedAsteroid
+
+
+    private val database= getDatabase(application)
+    private val asteroidRepository= AsteroidRepository(database)
+    val asteroids= asteroidRepository.asteroids
 
     /**
      * Call    getImageOfTheDay() on init so we can display status immediately.
      */
     init {
+        viewModelScope.launch {
+            asteroidRepository.refreshAsteroids()
+        }
+
+
         getImageOfTheDay()
+    }
+
+    fun displayPropertyDetails(asteroid: Asteroid) {
+        _navigateToSelectedAsteroid.value = asteroid
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedAsteroid.value = null
     }
 
     /**
