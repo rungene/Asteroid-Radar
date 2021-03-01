@@ -34,7 +34,7 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
                 val json=NasaApi.retrofitService.getAsteroidsAsync(Constants.API_KEY,nextSevenDaysFormattedDates[0],nextSevenDaysFormattedDates[6])
                 val obj = JSONObject(json)
                 val asteroidList= parseAsteroidsJsonResult(obj)
-                Log.e("asteroidList",""+asteroidList.size)
+                Log.i("asteroidList",""+asteroidList.size)
                 // tried printing asteroidlist[0]. this is printing crctly
                 val databaseAsteroid= asteroidList.map {
                     DatabaseAsteroid(

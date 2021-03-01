@@ -12,11 +12,9 @@ interface DatabaseDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg asteroid: DatabaseAsteroid)
 
-
-
 }
 
-@Database(entities = [DatabaseAsteroid::class],version = 1)
+@Database(entities = [DatabaseAsteroid::class],version = 1, exportSchema = false)
 abstract class AsteroidDatabase: RoomDatabase(){
     abstract val asteroidDao: DatabaseDao
 

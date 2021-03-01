@@ -15,17 +15,18 @@ import retrofit2.http.Query
 private const val BASE_URL = "https://api.nasa.gov/"
 
 //use the Moshi Builder to create a Moshi object with the KotlinJsonAdapterFactory:
-private val moshi = Moshi.Builder()
+/*private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
-        .build()
+        .build()*/
 
 
 /**
  * Use the Retrofit builder to build a retrofit object using a Moshi converter with our Moshi
  * object pointing to the desired URL
  */
+
 private val retrofit = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .addConverterFactory(ScalarsConverterFactory.create())
         .baseUrl(BASE_URL)
         .build()
 
