@@ -2,12 +2,14 @@ package com.udacity.asteroidradar.api
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.util.concurrent.TimeUnit
 
 //we use this class to hold our Network Layer
 //the api that ViewModel uses to communicate with our Webservice
@@ -19,6 +21,13 @@ private const val BASE_URL = "https://api.nasa.gov/"
         .add(KotlinJsonAdapterFactory())
         .build()*/
 
+//increase the timeout value using a custom OkHttpClient
+val client: OkHttpClient = OkHttpClient().newBuilder()
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+        .build()
+
 
 /**
  * Use the Retrofit builder to build a retrofit object using a Moshi converter with our Moshi
@@ -26,6 +35,7 @@ private const val BASE_URL = "https://api.nasa.gov/"
  */
 
 private val retrofit = Retrofit.Builder()
+        .client(client)
         .addConverterFactory(ScalarsConverterFactory.create())
         .baseUrl(BASE_URL)
         .build()
