@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.Constants
@@ -11,6 +12,7 @@ import com.udacity.asteroidradar.api.NasaApi
 import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.lang.Exception
 
 
@@ -55,6 +57,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             asteroidRepository.refreshAsteroids()
         }
 
+       // Timber.d("Inside init block")
+        Log.d("MainViewModel","Inside init block")
 
         getImageOfTheDay()
     }

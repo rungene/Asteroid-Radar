@@ -9,6 +9,9 @@ interface DatabaseDao{
     @Query("SELECT * FROM databaseasteroid ORDER BY closeApproachDate DESC")
     fun getAllAsteroids(): LiveData<List<DatabaseAsteroid>>
 
+    @Query("SELECT * FROM databaseasteroid WHERE closeApproachDate >=:startDate AND closeApproachDate <=:endDate ORDER BY closeApproachDate ASC")
+    fun getNextSevenDaysAsteroidFromDB(startDate: String, endDate: String): LiveData<List<DatabaseAsteroid>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg asteroid: DatabaseAsteroid)
 
