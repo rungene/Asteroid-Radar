@@ -14,7 +14,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/layout_margin"
         tools:background="@color/app_background"
         >
 
@@ -22,37 +22,37 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:textSize="24sp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/margin_start"
+            android:textSize="@dimen/list_text_size"
+            android:layout_marginTop="@dimen/layout_margin_top"
             android:contentDescription="@{String.valueOf(asteroid.id)}"
             android:text="@{String.valueOf(asteroid.id)}"
             android:textColor="@color/default_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="idasjbhdjashvbdasd"
+            tools:text="@string/list_text"
             tools:textColor="@color/default_text_color" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/layout_margin_top"
             android:contentDescription="@{asteroid.closeApproachDate}"
             android:text="@{asteroid.closeApproachDate}"
             android:textColor="@color/default_text_color"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            tools:text="idasjbhdjashvbdasd"
+            tools:text="@string/list_text"
             tools:textColor="@color/default_text_color" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/list_imageview_width"
+            android:layout_height="@dimen/list_imageview_height"
             android:contentDescription="@{asteroid.potentiallyHazardous ? @string/potentially_hazardous_asteroid_image : @string/not_hazardous_asteroid_image}"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="28dp"
+            android:layout_marginTop="@dimen/layout_margin_top"
+            android:layout_marginEnd="@dimen/layout_margin_end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_status_potentially_hazardous"

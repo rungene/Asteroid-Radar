@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_margin">10dp</dimen>
+    <dimen name="margin_start">44dp</dimen>
+    <dimen name="list_text_size">24sp</dimen>
+    <dimen name="layout_margin_top">20dp</dimen>
+    <dimen name="list_imageview_width">60dp</dimen>
+    <dimen name="list_imageview_height">60dp</dimen>
+    <dimen name="layout_margin_end">28dp</dimen>
+    <dimen name="fragment_main_layout_height">220dp</dimen>
+    <dimen name="text_padding">16dp</dimen>
+    <dimen name="fragment_main_text_size">20sp</dimen>
+    <dimen name="fragment_main_recyclerview_height">0dp</dimen>
+    <dimen name="layout_width">0dp</dimen>
+    <dimen name="fragment_detail_margin_top">4dp</dimen>
+    <dimen name="fragment_detail_layout_margin_top">16dp</dimen>
+    <dimen name="fragment_detail_layout_margin_top">16dp</dimen>
+</resources>
