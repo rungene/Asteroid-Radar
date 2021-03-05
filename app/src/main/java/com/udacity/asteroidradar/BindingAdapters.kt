@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.main.AsteroidListAdapter
 import com.udacity.asteroidradar.main.ImageApiStatus
 
-
+//use of BindingAdapter to map data to views.
 
 @BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {

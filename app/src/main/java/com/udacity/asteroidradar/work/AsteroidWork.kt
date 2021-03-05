@@ -7,6 +7,13 @@ import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.repository.AsteroidRepository
 import retrofit2.HttpException
 
+
+/*use of the WorkManager to download data periodically!
+
+Using WorkManager, you can schedule both periodic tasks and complex dependent chains of tasks:
+background work can be executed in parallel or sequentially, where you can specify an execution
+order. WorkManager seamlessly handles passing along input and output between tasks.*/
+
 class AsteroidWork(appContext: Context, params: WorkerParameters): CoroutineWorker(appContext, params) {
     //reate a companion object and define a work name that can be used to uniquely identify this worker.
     companion object {

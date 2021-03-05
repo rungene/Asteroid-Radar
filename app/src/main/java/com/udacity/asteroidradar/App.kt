@@ -13,7 +13,25 @@ import java.util.concurrent.TimeUnit
 
 class App :Application() {
 
-//Create a coroutine scope to use for your application:
+   /* use of coroutines to provide a fluid and scalable experience while managing asynchronous
+    long running tasks.
+
+    The most important features of using coroutines are:
+
+    Lightweight: The app can run many coroutines on a single thread.
+
+    Fewer memory leaks: We can launch coroutines in the specific scope of the operation we are
+    performing instead of launching them in the global scope.
+
+    Built-in cancellation support: Cancellation is propagated automatically through the
+    running coroutine hierarchy.
+
+    Jetpack integration: Many Jetpack libraries include extensions that provide full coroutines
+    support. Some libraries also provide their own coroutine scope that you can use for structured
+    concurrency.*/
+
+
+    //Create a coroutine scope to use for your application:
     val applicationScope = CoroutineScope(Dispatchers.Default)
 
 

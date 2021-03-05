@@ -16,6 +16,21 @@ import timber.log.Timber
 import java.lang.Exception
 
 
+/*
+The MVVM pattern is a pattern that helps to completely separate the business and presentation
+logic from the UI, this makes your app easier for testing and for maintenance.
+
+The View is responsible for the layout structured displayed on the screen.
+
+The ViewModel implements the data and commands connected to the View to notify the View of
+state changes via change notifications events.
+
+The Model is a non-visual class that has the data to use.
+
+The ViewModel knows Model but does not know View and View can know ViewModel but does not know Model.*/
+
+
+
 /**
  * The [ViewModel] that is attached to the [MainFragment].
  */

@@ -3,12 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--    Adding the layout root tag followed by a data element and a view root element is what
+    you need to correctly use data binding.
+
+    See below what is the use of each element:
+    • data -> Describe data that is available for binding.
+    • view -> Contains your root hierarchy similar to layout files that are not used
+    with data binding.-->
+
     <data>
         <variable
             name="viewModel"
             type="com.udacity.asteroidradar.main.MainViewModel" />
 
     </data>
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -48,6 +58,13 @@
                 android:contentDescription="@string/image_of_the_day"
                 />
         </FrameLayout>
+
+     <!--   RecyclerView recycles the views created at the beginning when the views go out of
+        scope, and reuses them when is needed to make it seem as if the views were never
+        offloaded and were virtually present outside the window.
+
+        This makes a better performance of the list of data in your app,
+        overall when the list contains many elements.-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/asteroid_recycler"
